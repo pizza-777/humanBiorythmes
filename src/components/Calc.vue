@@ -27,7 +27,7 @@
           autocomplete="on"
         ></b-form-input>
       </b-input-group>
-      <div class="container">
+      <div class="container" v-if="show">
         Физический цикл: {{ p }} день (из 23. Переход на 0 и 11.5 дней). {{ pf}}
         <br />
         Эммоциональный цикл: {{ e }} день (из 28. Переход на 0 и 14 дней) {{ ef }}
@@ -51,7 +51,7 @@ export default {
   data() {
     return {
       startDate: null,
-      endDate: moment().format('YYYY-MM-DD'),
+      endDate: moment().format('YYYY-MM-DD'),      
     }
   },
   computed: {
@@ -68,7 +68,13 @@ export default {
       console.log(days)
       return days
     },
+    show: function(){
+      return this.days != null
+    },
     p: function () {
+      if(this.days == null) {
+        return null
+      }
       return this.days % 23
     },
     e: function () {
