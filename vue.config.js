@@ -3,7 +3,7 @@ module.exports = {
         config
         .plugin('html')
         .tap(args => {
-          args[0].title = 'NODE RADAR'
+          args[0].title = 'Биоритмы человека'
           return args
         })
       },
